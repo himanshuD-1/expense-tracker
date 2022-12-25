@@ -1,0 +1,43 @@
+{% extends 'base_auth.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="card mt-5">
+
+            <div class="card-body">
+                <div class="card-title py-3">
+                    <h4>Login into Your account</h4>
+                </div>
+
+                <form action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    {% include 'partials/messages.html' %}
+                    <div class="form-group">
+                        <input type="text" name="username" id="userField" placeholder="username" class="form-control"  />
+                    </div>
+                    <div class="invalid_feedback invalid-feedback" style="display: none;">
+
+                    </div>
+                    <p class="text-sm text-success userOutputSuccess"></p>
+                    <div class="form-group">
+                        <input type="password" name="password" id="passwordField" placeholder="password" class="form-control" />
+                        
+                    </div>
+                    <input type="submit" value="Login" class="btn btn-block btn-primary submit-btn" >
+                </form>
+                <span class="text-lead lead">Don't have an account </span><a href="{% url 'register' %} ">Register</a><br>
+                <span class="text-lead lead">Forgot Password ? </span><a href="{% url 'reset-password' %}">Reset it</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
